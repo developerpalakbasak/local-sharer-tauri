@@ -41,7 +41,6 @@ jobs:
           sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libjavascriptcoregtk-4.1-dev
 
       - name: Install frontend / CLI dependencies
-        working-directory: local_sharer_tauri
         run: npm install
 
       - name: Build Tauri App
@@ -49,7 +48,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          projectPath: local_sharer_tauri
           tagName: v__VERSION__
           releaseName: 'Local Sharer v__VERSION__'
           releaseBody: 'Lightweight local file sharer desktop app.'

@@ -37,3 +37,6 @@ codegen-units = 1      # Maximize compiler optimizations across modules
 panic = "abort"        # Remove unwinding tables
 strip = true           # Strip debug symbols automatically
 
+[target.x86_64-pc-windows-gnu]
+linker = "x86_64-w64-mingw32-gcc"
+ar = "x86_64-w64-mingw32-gcc-ar"
