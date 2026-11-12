@@ -120,8 +120,9 @@ startBtn.addEventListener('click', async () => {
         res.entries.forEach(entry => {
           const item = document.createElement('div');
           item.className = 'qr-item';
+          const qrSrc = entry.qrDataUrl || entry.qr_data_url || '';
           item.innerHTML = `
-            <img src="${entry.qrDataUrl}" alt="QR">
+            <img src="${qrSrc}" alt="QR">
             <p>${entry.name}</p>
             <a href="${entry.url}" class="qr-link">${entry.url}</a>
           `;

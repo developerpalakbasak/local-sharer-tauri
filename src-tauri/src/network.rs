@@ -7,6 +7,7 @@ use serde::{Deserialize, Serialize};
 use std::net::IpAddr;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct NetworkEntry {
     pub name: String,
     pub address: String,
@@ -61,6 +62,17 @@ pub fn get_network_ips(port: u16) -> Vec<NetworkEntry> {
                 }
             }
         }
+    }
+
+    if entries.is_empty() {
+        let url = format!("http://127.0.0.1:{}", port);
+        let qr_data_url = generate_qr_svg_base64(&url).unwrap_or_default();
+        entries.push(NetworkEntry {
+            name: "Localhost".to_string(),
+            address: "127.0.0.1".to_string(),
+            url,
+            qr_data_url,
+        });
     }
 
     entries
