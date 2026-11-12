@@ -1,0 +1,39 @@
+[package]
+name = "local-sharer"
+version = "1.0.0"
+description = "High-performance, ultra-small local file sharer"
+authors = ["Palak Basak"]
+edition = "2021"
+
+[lib]
+name = "local_sharer_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.37", features = ["full"] }
+axum = { version = "0.7", features = ["tokio"] }
+tower-http = { version = "0.5", features = ["cors", "fs"] }
+tower = { version = "0.4", features = ["util"] }
+tokio-util = { version = "0.7", features = ["io"] }
+futures-util = "0.3"
+qrcode = "0.14"
+base64 = "0.22"
+network-interface = "2.0"
+open = "5.3"
+rfd = "0.15"
+dirs = "5.0"
+chrono = "0.4"
+
+[profile.release]
+opt-level = "z"        # Optimize binary strictly for size
+lto = true             # Link-Time Optimization
+codegen-units = 1      # Maximize compiler optimizations across modules
+panic = "abort"        # Remove unwinding tables
+strip = true           # Strip debug symbols automatically
+

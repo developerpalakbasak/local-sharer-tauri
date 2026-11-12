@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Sharer Desktop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <h1>Local<span class="highlight">Sharer</span></h1>
+      <p class="subtitle">Share files across network</p>
+
+      <div class="folder-selection">
+        <h3>Save Destination</h3>
+        <div id="save-path" class="path-display">No folder selected</div>
+        <div style="display: flex; gap: 8px;">
+          <button id="change-folder-btn" class="btn secondary">Change Folder</button>
+          <button id="open-folder-btn" class="btn secondary">Open Folder</button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="start-btn" class="btn primary">Start Sharing</button>
+        <button id="stop-btn" class="btn danger" style="display:none;">Stop Sharing</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div id="status-panel" class="status-panel offline">
+        <h2>Status: <span id="status-text">Stopped</span></h2>
+      </div>
+
+      <div id="upload-progress-container" style="display:none;" class="status-panel">
+        <h3 style="margin-top: 0">Active Transfer</h3>
+        <p id="upload-filename">Filename: </p>
+        <div style="background: var(--panel-bg); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-top: 8px;">
+          <div id="upload-progress-bar" style="background: var(--accent); width: 0%; height: 8px; transition: width 0.2s ease;"></div>
+        </div>
+      </div>
+
+      <div id="qr-container" class="qr-container" style="display:none;">
+        <h3>Connect your devices:</h3>
+        <div class="qr-list" id="qr-list"></div>
+      </div>
+    </main>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
+

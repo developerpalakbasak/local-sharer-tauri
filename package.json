@@ -1,0 +1,17 @@
+{
+  "name": "local-sharer-tauri",
+  "version": "1.0.0",
+  "description": "High performance, ultra-small local file sharer desktop app built with Tauri v2 and Rust",
+  "author": "Palak Basak",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.2.0"
+  }
+}
+
